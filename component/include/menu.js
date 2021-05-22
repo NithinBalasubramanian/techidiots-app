@@ -65,6 +65,7 @@ const navBar = StyleSheet.create({
       width : '100%',
       height : 600,
       backgroundColor : '#40e693',
-      display : 'block',    
-  }
+      display : 'block',   
+      boderTop : '#fff', 
+  },
 });

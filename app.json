@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "techidiots",
+    "name": "Techidiots",
     "slug": "techidiots",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "React native Techidiots Application",
+    "githubUrl": "https://github.com/NithinBalasubramanian/techidiots-app.git"
   }
 }
