@@ -1,5 +1,5 @@
 import React , { useState , useEffect } from 'react';
-import { StyleSheet, Image , Text, View } from 'react-native';
+import { StyleSheet, Image , Text, View , ScrollView , TouchableHighlight } from 'react-native';
 import axios from '../Api/instanceApi';
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
     let [ ListTopdata , setListTopdata ] = useState([]);
 
     useEffect(() => {
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
         fetchAbove();
       
     //   const timer = setTimeout(() => {
@@ -17,7 +17,7 @@ export default function Home() {
     //   const timer1 = setTimeout(() => {
     //      fetchAll();
     //     }, 5000);
-      return () => clearTimeout(timer);
+     // return () => clearTimeout(timer);
       
     }, [])
   
@@ -32,13 +32,20 @@ export default function Home() {
         })
     }
 
+    const pressHandler = () => {
+      alert('hi');
+    }
+
   return (
-    <>
+    
+
+    <ScrollView style={ homePage.container } >
         <View style={ homePage.main } >
         { ListTopdata.map((itm,k) => {
                 if(k < 4  ){
                     return (
-                        <View style={ homePage.topList }>
+                      <TouchableHighlight onPress={ pressHandler } key={k}>
+                        <View style={ homePage.topList } >
                             <Image
                                 style={ homePage.blogImg }
                                 source={{
@@ -51,25 +58,32 @@ export default function Home() {
                                 </Text>
                             </View>
                         </View>
+                      </TouchableHighlight>
                     )
                 } 
             })
         }
         </View>
-    </>
+    </ScrollView>
+
   );
 }
 
 const homePage = StyleSheet.create({
+  container : {
+    width : '100%',
+    height : 600,
+    overflow : 'scroll',
+    flex : 1,
+  },
   main: {
     width: '100%',
     minHeight: 600,
-    overflow: 'hidden',
   },
   topList : {
       width:'90%',
       marginVertical:10,
-      marginHorizontal: 'auto',
+      marginHorizontal: '5%',
       backgroundColor:'#f2f2f2',
       height: 300,
       overflow : 'hidden',
@@ -89,9 +103,9 @@ const homePage = StyleSheet.create({
   onImgTitle : {
     color: '#cafacc',
     fontSize: 20,
-    fontWeight: 800,
+    fontWeight: "800",
     paddingTop: 130,
     paddingLeft : 10,
-    letterSpacing: '1px',
+    letterSpacing: 1,
   }
 });

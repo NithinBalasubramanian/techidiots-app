@@ -3,7 +3,7 @@ import { StyleSheet, Image , Text, View } from 'react-native';
 import Logo from '../../assets/techidiots.png';
 import { BiMenuAltLeft } from 'react-icons/bi';
 
-export default function App() {
+const Menu = () => {
 
  const [ NavStatus , setNavStatus ] = useState(true);
 
@@ -12,7 +12,6 @@ export default function App() {
  }
 
   return (
-    <>
         <View style={ navBar.main } >
             <View style={ navBar.logo } >
                 <Image
@@ -23,15 +22,13 @@ export default function App() {
                 />
             </View>
             <View style={ navBar.icon }>
-                <BiMenuAltLeft  onClick={ menuState } size="40px" color="#fff" style={{ margin:"10px 20px 10px 10px",float:"right" }} />
+                    
             </View>
         </View>
-        <View style={ NavStatus ? navBar.mainNavListOff : navBar.mainNavListOn  } >
-
-        </View>
-    </>
   );
 }
+
+export default Menu;
 
 const navBar = StyleSheet.create({
   main: {
@@ -42,6 +39,7 @@ const navBar = StyleSheet.create({
     flex : 1,
     flexDirection: "row",
     flexWrap: "wrap",
+    padding : 15,
   },
   logo: {
     width : '80%',
@@ -50,7 +48,7 @@ const navBar = StyleSheet.create({
   },
   logoImg : {
       width : '75%',
-      height : '94%',
+      height : 60,
       margin: 4,
   },
   icon : {
@@ -65,7 +63,6 @@ const navBar = StyleSheet.create({
       width : '100%',
       height : 600,
       backgroundColor : '#40e693',
-      display : 'block',   
-      boderTop : '#fff', 
+      display : 'flex',  
   },
 });
