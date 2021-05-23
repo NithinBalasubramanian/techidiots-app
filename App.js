@@ -8,9 +8,9 @@ export default function App() {
   return (
     <>
       <View style={styles.body}>
-      <Menu />
+       <Menu />
+       <Home />
       </View>
-      <Home />
     </>
   );
 }
@@ -21,5 +21,6 @@ const styles = StyleSheet.create({
     margin:0,
     paddingTop: 0,
     height : 80,
+    flex : 1,
   },
 });

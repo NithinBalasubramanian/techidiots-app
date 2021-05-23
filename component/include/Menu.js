@@ -33,10 +33,9 @@ export default Menu;
 const navBar = StyleSheet.create({
   main: {
     width: '100%',
-    height: 60,
+    height: 75,
     backgroundColor: '#40e693',
     overflow: 'hidden',
-    flex : 1,
     flexDirection: "row",
     flexWrap: "wrap",
     padding : 15,

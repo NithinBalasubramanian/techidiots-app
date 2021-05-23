@@ -1,6 +1,7 @@
 import React , { useState , useEffect } from 'react';
-import { StyleSheet, Image , Text, View , ScrollView , TouchableHighlight } from 'react-native';
+import { StyleSheet, Image , Text, View , ScrollView , Alert ,TouchableHighlight } from 'react-native';
 import axios from '../Api/instanceApi';
+import Footer from '../include/footer';
 
 export default function Home() {
 
@@ -33,7 +34,7 @@ export default function Home() {
     }
 
     const pressHandler = () => {
-      alert('hi');
+      Alert.alert('Clicked','hi');
     }
 
   return (
@@ -42,7 +43,7 @@ export default function Home() {
     <ScrollView style={ homePage.container } >
         <View style={ homePage.main } >
         { ListTopdata.map((itm,k) => {
-                if(k < 4  ){
+                if(k < 8 ){
                     return (
                       <TouchableHighlight onPress={ pressHandler } key={k}>
                         <View style={ homePage.topList } >
@@ -64,6 +65,7 @@ export default function Home() {
             })
         }
         </View>
+        <Footer />
     </ScrollView>
 
   );
@@ -72,8 +74,6 @@ export default function Home() {
 const homePage = StyleSheet.create({
   container : {
     width : '100%',
-    height : 600,
-    overflow : 'scroll',
     flex : 1,
   },
   main: {
@@ -85,7 +85,7 @@ const homePage = StyleSheet.create({
       marginVertical:10,
       marginHorizontal: '5%',
       backgroundColor:'#f2f2f2',
-      height: 300,
+      height: 200,
       overflow : 'hidden',
       borderRadius : 10,
   },
@@ -102,8 +102,8 @@ const homePage = StyleSheet.create({
   },
   onImgTitle : {
     color: '#cafacc',
-    fontSize: 20,
-    fontWeight: "800",
+    fontSize: 18,
+    fontWeight: "900",
     paddingTop: 130,
     paddingLeft : 10,
     letterSpacing: 1,
