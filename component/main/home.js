@@ -1,7 +1,7 @@
 import React , { useState , useEffect } from 'react';
 import { StyleSheet, Image , Text, View , ScrollView , Alert ,TouchableHighlight } from 'react-native';
 import axios from '../Api/instanceApi';
-import Footer from '../include/footer';
+
 
 export default function Home() {
 
@@ -65,7 +65,6 @@ export default function Home() {
             })
         }
         </View>
-        <Footer />
     </ScrollView>
 
   );
