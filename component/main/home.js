@@ -1,25 +1,24 @@
 import React , { useState , useEffect } from 'react';
-import { StyleSheet, Image , Text, View , ScrollView , Alert ,TouchableHighlight } from 'react-native';
+import { StyleSheet, Image , Text, View , ScrollView , Alert ,TouchableHighlight, FlatList, TouchableOpacity } from 'react-native';
 import axios from '../Api/instanceApi';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function Home() {
+//pages
+import Blogview from './blogView'
+
+
+const Stack = createStackNavigator();
+
+
+const Home = ({ navigation }) => {
 
   
     let [ ListTopdata , setListTopdata ] = useState([]);
 
     useEffect(() => {
-        // window.scrollTo(0, 0);
-        fetchAbove();
-      
-    //   const timer = setTimeout(() => {
-    //      fetchMid();
-    //     }, 3000);
-    //   const timer1 = setTimeout(() => {
-    //      fetchAll();
-    //     }, 5000);
-     // return () => clearTimeout(timer);
-      
+        fetchAbove();      
     }, [])
   
     const fetchAbove = () => {
@@ -33,42 +32,56 @@ export default function Home() {
         })
     }
 
-    const pressHandler = () => {
-      Alert.alert('Clicked','hi');
+    const renderItem = ({item}) => {
+      return (
+        <TouchableOpacity onPress={() => { navigation.push("Blogview", item )} } > 
+          <View style={ homePage.topList } >
+              <Image
+                  style={ homePage.blogImg }
+                  source={{
+                  uri:  item.imgUrl ,
+                  }}
+              />
+              <View style={ homePage.onImg }>
+                  <Text style={ homePage.onImgTitle }>
+                      { item.title }
+                  </Text>
+              </View>
+          </View>
+        </TouchableOpacity>
+      )
     }
 
   return (
     
 
-    <ScrollView style={ homePage.container } >
+    <ScrollView style={ homePage.container }  >
         <View style={ homePage.main } >
-        { ListTopdata.map((itm,k) => {
-                if(k < 8 ){
-                    return (
-                      <TouchableHighlight onPress={ pressHandler } key={k}>
-                        <View style={ homePage.topList } >
-                            <Image
-                                style={ homePage.blogImg }
-                                source={{
-                                uri:  itm.imgUrl ,
-                                }}
-                            />
-                            <View style={ homePage.onImg }>
-                                <Text style={ homePage.onImgTitle }>
-                                    { itm.title }
-                                </Text>
-                            </View>
-                        </View>
-                      </TouchableHighlight>
-                    )
-                } 
-            })
-        }
+          <FlatList  data={ListTopdata}
+                    keyExtractor={item => `${item._id}`}
+                    renderItem={renderItem}
+                    contentContainerStyle={{ paddingVertical: 20 }}
+              />
         </View>
     </ScrollView>
 
   );
 }
+
+const Page = () => {
+  return(
+      <Stack.Navigator
+          screenOptions={{
+              headerShown: false
+          }}
+          initialRouteName={'Home'}  >
+              <Stack.Screen name="Home" component={Home} />
+              <Stack.Screen name="Blogview" component={Blogview} />
+          </Stack.Navigator>
+  )
+}
+
+export default Page
 
 const homePage = StyleSheet.create({
   container : {

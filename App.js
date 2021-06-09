@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 //pages
 
 import Menu from './component/include/Menu'
-import Home from './component/main/home';
+import Page from './component/main/home';
 import Favorate from './component/main/Favorate'
 import Profile from './component/main/Profile'
 import Search from './component/main/Search'
@@ -35,7 +35,7 @@ export default function App() {
                  ...style.shadow,
              }
          }}> 
-        <Tab.Screen name="Home" component={Home} options={{
+        <Tab.Screen name="Home" component={Page} options={{
             tabBarIcon : ({focused}) => (
                 <View style={style.navIcon }>
                     <Image 

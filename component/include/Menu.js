@@ -3,6 +3,10 @@ import { StyleSheet, Image , Text, View } from 'react-native';
 import Logo from '../../assets/techidiots.png';
 import { BiMenuAltLeft } from 'react-icons/bi';
 
+//Styles
+
+import { StyleData , ScreenDisp } from '../../Ui/StyleData'
+
 const Menu = () => {
 
  const [ NavStatus , setNavStatus ] = useState(true);
@@ -22,7 +26,17 @@ const Menu = () => {
                 />
             </View>
             <View style={ navBar.icon }>
-                    
+                <Image
+                    style={ navBar.logoImg }
+                    source ={require('../../assets/icons/notification.png')}
+                    resizeMode ='contain'
+                    style = {{
+                        width:25,
+                        height : 25,
+                        margin:20,
+                        tintColor : StyleData.SecondaryColor,
+                    }}
+                />
             </View>
         </View>
   );

@@ -1,6 +1,6 @@
 export const StyleData = {
-    SecondaryColor : "#cbf7c6",
-    PriColor : '#40e693',
+    SecondaryColor : "#cafacc",
+    PriColor : '#40e6a1',
     ShadowColor :'#7F5DF0',
     TextHeading : '#424240',
     SubText : '#b8b5ad',
