@@ -5,6 +5,8 @@ export const StyleData = {
     TextHeading : '#424240',
     SubText : '#b8b5ad',
     White : '#fff',
+    cardColor : '#e9f7ec',
+    background : "#edf2ed",
 }
 
 export const ScreenDisp = {
